@@ -1,0 +1,37 @@
+<mat-card class="carrera-card">
+  <mat-card-header>
+    <mat-card-title>Registrar Nueva Carrera</mat-card-title>
+    <mat-card-subtitle
+      >Agrega los detalles de la nueva carrera</mat-card-subtitle
+    >
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #carreraForm="ngForm" (ngSubmit)="registrarCarrera(carreraForm)">
+      <div class="form-group">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nombre de la Carrera</mat-label>
+          <input
+            matInput
+            placeholder="Ingrese el nombre de la carrera"
+            name="nombre"
+            ngModel
+            required
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="actions">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="carreraForm.invalid"
+        >
+          Registrar
+        </button>
+        <button mat-button color="warn" type="reset">Cancelar</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

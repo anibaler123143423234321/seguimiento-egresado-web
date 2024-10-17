@@ -1,0 +1,75 @@
+<section class="login-container">
+  <!-- Imagen del Instituto a la Izquierda -->
+  <div class="left-section">
+    <div class="image-container">
+      <img
+        src="assets/EstudiantesLogin.png"
+        alt="Instituto Enrique López Albújar"
+        class="instituto-image"
+      />
+    </div>
+  </div>
+
+  <!-- Formulario de Login a la Derecha -->
+  <div class="right-section">
+    <mat-card class="login-card" @flyIn>
+      <img src="assets/logo.png" alt="Logo del Instituto" class="logo" />
+      <h2>INTRANET AL EGRESADO</h2>
+      <form
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayoutGap="20px"
+        #f="ngForm"
+        (ngSubmit)="loginUsuario(f)"
+      >
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>USUARIO O EMAIL</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Ingrese su código"
+            name="email"
+            ngModel
+            required
+          />
+          <mat-error>Debe ingresar su código de docente</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Clave</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="Clave"
+            name="password"
+            ngModel
+            required
+          />
+          <mat-error>Debe ingresar su clave</mat-error>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="btn-entrar"
+        >
+          ENTRAR
+        </button>
+      </form>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+
+      <p class="developed-by">Desarrollado por Ing. Dagner Chuman Lluen</p>
+    </mat-card>
+  </div>
+</section>

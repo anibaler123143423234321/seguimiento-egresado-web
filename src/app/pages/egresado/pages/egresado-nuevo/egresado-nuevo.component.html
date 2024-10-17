@@ -1,0 +1,90 @@
+<mat-card class="egresado-card">
+  <mat-card-header>
+    <mat-card-title>Registrar Nuevo Egresado</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #egresadoForm="ngForm" (ngSubmit)="registrarEgresado(egresadoForm)">
+      <mat-form-field appearance="fill">
+        <mat-label>DNI</mat-label>
+        <input matInput name="dni" ngModel required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput name="nombre" ngModel required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Apellidos</mat-label>
+        <input matInput name="apellidos" ngModel required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Sexo</mat-label>
+        <mat-select name="sexo" ngModel required>
+          <mat-option value="M">Masculino</mat-option>
+          <mat-option value="F">Femenino</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input
+          matInput
+          [matDatepicker]="pickerNacimiento"
+          name="fechaNacimiento"
+          ngModel
+          required
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerNacimiento"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerNacimiento></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Año de Egreso</mat-label>
+        <mat-select name="anioEgreso" ngModel>
+          <mat-option *ngFor="let year of years" [value]="year">{{
+            year
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Id Carrera</mat-label>
+        <input matInput type="number" name="idCarrera" ngModel required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Teléfono 1</mat-label>
+        <input matInput name="telefono1" ngModel />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Teléfono 2</mat-label>
+        <input matInput name="telefono2" ngModel />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Titulado</mat-label>
+        <mat-select name="titulado" [(ngModel)]="egresado.titulado">
+          <mat-option value="Sí">Sí</mat-option>
+          <mat-option value="No">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Discapacidad</mat-label>
+        <mat-select name="discapacidad" [(ngModel)]="egresado.discapacidad">
+          <mat-option value="Sí">Sí</mat-option>
+          <mat-option value="No">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Registrar</button>
+    </form>
+  </mat-card-content>
+</mat-card>

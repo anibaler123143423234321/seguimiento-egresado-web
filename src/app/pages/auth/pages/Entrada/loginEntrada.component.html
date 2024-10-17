@@ -1,0 +1,42 @@
+<div class="intranet-container">
+  <header class="header">
+    <img src="assets/logo.png" alt="Logo del Instituto" class="logo" />
+    <h1>IESTP Enrique Lopez Albujar</h1>
+  </header>
+
+  <main class="main-content">
+    <h2>INTRANET SEGUIMIENTO AL EGRESADO</h2>
+
+    <div class="menu-container">
+      <!--       <button mat-raised-button color="accent" class="menu-item">
+        <mat-icon>admin_panel_settings</mat-icon>
+        ADMINISTRATIVO
+      </button> -->
+
+      <button
+        mat-raised-button
+        color="accent"
+        class="menu-item"
+        (click)="navigateToDocente()"
+      >
+        <mat-icon>school</mat-icon>
+        ADMINISTRATIVO
+      </button>
+
+      <button
+        mat-raised-button
+        color="accent"
+        class="menu-item"
+        (click)="navigateToEstudiante()"
+      >
+        <mat-icon>person</mat-icon>
+        ESTUDIANTE
+      </button>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>Copyright © 2024 IESTP Enrique Lopez Albujar</span>
+    <span class="contact-info">Tel: 958875176</span>
+  </footer>
+</div>

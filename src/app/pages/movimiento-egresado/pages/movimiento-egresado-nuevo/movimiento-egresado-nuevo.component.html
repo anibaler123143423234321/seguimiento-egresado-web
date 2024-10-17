@@ -1,0 +1,83 @@
+<mat-card class="egresado-card">
+  <mat-card-header>
+    <mat-card-title>Registrar Nuevo Movimiento Egresado</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #egresadoForm="ngForm" (ngSubmit)="registrarEgresado(egresadoForm)">
+      <mat-form-field appearance="fill">
+        <mat-label>ID del Egresado</mat-label>
+        <input
+          matInput
+          placeholder="ID del Egresado"
+          name="egresadoId"
+          ngModel
+          required
+          type="number"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Empresa</mat-label>
+        <input
+          matInput
+          placeholder="Nombre de la empresa"
+          name="empresa"
+          ngModel
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Cargo</mat-label>
+        <input
+          matInput
+          placeholder="Cargo desempeñado"
+          name="cargo"
+          ngModel
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de Inicio</mat-label>
+        <input
+          matInput
+          [matDatepicker]="pickerInicio"
+          name="fechaInicio"
+          ngModel
+          required
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerInicio"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerInicio></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de Fin (Opcional)</mat-label>
+        <input matInput [matDatepicker]="pickerFin" name="fechaFin" ngModel />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerFin"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerFin></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Observaciones (Opcional)</mat-label>
+        <textarea matInput name="observaciones" ngModel></textarea>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="egresadoForm.invalid"
+      >
+        Registrar
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

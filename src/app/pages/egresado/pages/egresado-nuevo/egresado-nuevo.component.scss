@@ -1,0 +1,53 @@
+.egresado-card {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espacio entre los elementos del formulario */
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+button {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group .mat-form-field,
+.form-group .mat-checkbox {
+  margin-bottom: 8px;
+}
+
+.mat-form-field:hover {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.mat-select:hover {
+  background-color: #e0e0e0;
+}
+
+button:hover {
+  background-color: #0056b3;
+  color: white;
+  border: 1px solid #004494;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  background-color: #003d7a;
+}

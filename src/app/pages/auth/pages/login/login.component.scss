@@ -1,0 +1,204 @@
+/* Contenedor principal */
+.login-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Sección izquierda */
+.left-section {
+  width: 70%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Sección derecha */
+.right-section {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor de la imagen */
+.image-container {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen del instituto */
+.instituto-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tarjeta de inicio de sesión */
+.login-card {
+  width: 100%;
+  max-width: none;
+  padding: 3.5rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  border-radius: 0;
+  animation: slideInFromLeft 3s ease-out;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+/* Animación CSS */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100vw) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Estilo del logo */
+.logo {
+  display: block;
+  margin: 0 auto 20px;
+  width: 100px;
+}
+
+/* Estilos del encabezado */
+h2 {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Botón "ENTRAR" */
+.btn-entrar {
+  width: 100%;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Texto del pie de página */
+.footer-text {
+  text-align: center;
+  font-size: 0.875rem;
+  margin: 0.5rem 0;
+}
+
+/* Íconos sociales */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Texto "Desarrollado por" */
+.developed-by {
+  text-align: center;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+/* Medios de comunicación */
+@media (max-width: 768px) {
+  .left-section {
+    display: none;
+  }
+
+  .right-section {
+    width: 100%;
+    flex: 1;
+  }
+}
+
+.left-section,
+.right-section {
+  min-height: 100%;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 1024px) {
+  .left-section {
+    display: none;
+  }
+
+  .right-section {
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .login-card {
+    max-width: 400px;
+    max-height: 600px;
+    margin: 0 auto;
+  }
+}
+
+/* Ajustes de campos de entrada */
+mat-form-field .mat-input-element {
+  background-color: transparent;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-form-field.mat-form-field-outline .mat-form-field-wrapper {
+  padding: 0px;
+}
+
+mat-form-field.mat-form-field-outline .mat-form-field-outline-start,
+mat-form-field.mat-form-field-outline-end {
+  border-width: 1px;
+}
+
+mat-form-field.mat-focused .mat-form-field-outline-start,
+mat-form-field.mat-focused .mat-form-field-outline-end {
+  border-color: #3f51b5;
+}
+
+/* Estilo de los íconos sociales */
+.social-icons a {
+  font-size: 24px;
+  color: #000;
+  text-decoration: none;
+  border: 1px solid rgb(228, 205, 205);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.social-icons a:hover {
+  color: #555;
+}
