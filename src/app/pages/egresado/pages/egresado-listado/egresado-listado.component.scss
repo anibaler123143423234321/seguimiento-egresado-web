@@ -1,0 +1,24 @@
+.mat-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 8px; // Aumentar el espaciado
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .mat-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .mat-header-cell,
+  .mat-cell {
+    white-space: nowrap;
+    font-size: 12px; // Reducir el tamaño de la fuente
+    padding: 4px; // Reducir el espaciado en pantallas pequeñas
+  }
+}

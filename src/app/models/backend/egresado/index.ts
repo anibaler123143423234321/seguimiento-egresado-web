@@ -14,4 +14,10 @@ export interface Egresado {
   titulado: boolean;
   discapacidad: boolean;
   carrera?: Carrera; // Esto depende de si quieres incluir los datos de la carrera anidados
+  // Otros campos según tu modelo Java
+  email?: string;
+  password?: string;
+  username?: string;
+  estado?: string;
+  role?: string;
 }

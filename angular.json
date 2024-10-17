@@ -108,7 +108,6 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "client-inmueble-app:build",
-            "proxyConfig": "src/proxy.conf.json",
             "port": 5200
           },
           "configurations": {

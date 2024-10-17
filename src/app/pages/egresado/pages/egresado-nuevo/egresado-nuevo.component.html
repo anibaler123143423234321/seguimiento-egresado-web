@@ -7,7 +7,15 @@
     <form #egresadoForm="ngForm" (ngSubmit)="registrarEgresado(egresadoForm)">
       <mat-form-field appearance="fill">
         <mat-label>DNI</mat-label>
-        <input matInput name="dni" ngModel required />
+        <input matInput name="dni" ngModel required pattern="^[0-9]{8}$" />
+        <mat-error
+          *ngIf="
+            egresadoForm.controls['dni']?.invalid &&
+            egresadoForm.controls['dni']?.touched
+          "
+        >
+          El DNI debe tener 8 números.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -82,6 +90,39 @@
           <mat-option value="Sí">Sí</mat-option>
           <mat-option value="No">No</mat-option>
         </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput name="email" ngModel required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          name="password"
+          ngModel
+          required
+          [type]="hide ? 'password' : 'text'"
+          (keyup)="onPasswordChange($event)"
+        />
+        <button mat-icon-button matSuffix (click)="hide = !hide">
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error
+          *ngIf="
+            egresadoForm.controls['password']?.invalid &&
+            egresadoForm.controls['password']?.touched
+          "
+        >
+          La contraseña debe contener al menos un número y un símbolo.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput name="username" ngModel required />
       </mat-form-field>
 
       <button mat-raised-button color="primary" type="submit">Registrar</button>

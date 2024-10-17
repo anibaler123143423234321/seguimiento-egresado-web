@@ -17,36 +17,25 @@ import {
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [
-    trigger('flyIn', [
-      transition(':enter', [
-        animate(
-          '1s ease-in-out',
-          keyframes([
-            style({ transform: 'translateX(80%)', opacity: 2, offset: 0 }),
-          ])
-        ),
-      ]),
-    ]),
-  ],
 })
 export class LoginComponent implements OnInit {
   loading$!: Observable<boolean | null>;
+  showPassword = false; // Inicializa como true para mostrar la contraseña por defecto
 
   constructor(private store: Store<fromRoot.State>) {}
 
   ngOnInit(): void {}
-
   loginUsuario(form: NgForm): void {
     if (!form.valid) {
-      // Si el formulario no es válido (los campos están vacíos o incompletos), no enviar
       return;
     }
 
     const userLoginRequest: fromUser.EmailPasswordCredentials = {
-      email: form.value.email || '', // Evitar valor null o undefined
-      password: form.value.password || '', // Evitar valor null o undefined
+      email: form.value.email || '',
+      password: form.value.password || '',
     };
+
+    console.log('Dispatching SignInEmail', userLoginRequest); // Verificar si llega hasta aquí
 
     this.store.dispatch(new fromUser.SignInEmail(userLoginRequest));
   }

@@ -20,7 +20,7 @@ export class SaveEffects {
     private notification: NotificationService
   ) {}
 
-  // Effect para crear una carrera
+  // Efecto para crear un egresado
   create: Observable<Action> = createEffect(() =>
     this.actions.pipe(
       ofType(fromActions.Types.CREATE),
@@ -30,22 +30,44 @@ export class SaveEffects {
         console.log('Datos que se están enviando:', request);
       }),
       switchMap((request: EgresadoCreateRequest) =>
-        this.httpClient.post<EgresadoResponse>(`${environment.url}api/egresados`, request).pipe(
-          delay(1000),
-          tap((response: EgresadoResponse) => {
-            this.router.navigate(['static/welcome']);
-          }),
-          map(
-            (egresado: EgresadoResponse) =>
-              new fromActions.CreateSuccess(egresado)
-          ),
-          catchError((err) => {
-            this.notification.error(
-              `Errores guardando al egresado: ${err.message}`
-            );
-            return of(new fromActions.CreateError(err.message));
-          })
-        )
+        this.httpClient
+          .post<EgresadoResponse>(`${environment.url}api/egresados`, request)
+          .pipe(
+            delay(1000),
+            tap((response: EgresadoResponse) => {
+              this.router.navigate(['static/welcome']);
+            }),
+            map(
+              (egresado: EgresadoResponse) =>
+                new fromActions.CreateSuccess(egresado)
+            ),
+            catchError((err) => {
+              this.notification.error(
+                `Errores guardando al egresado: ${err.message}`
+              );
+              return of(new fromActions.CreateError(err.message));
+            })
+          )
+      )
+    )
+  );
+
+  // Efecto para obtener todos los egresados
+  getAll: Observable<Action> = createEffect(() =>
+    this.actions.pipe(
+      ofType(fromActions.Types.READ),
+      switchMap(() =>
+        this.httpClient
+          .get<EgresadoResponse[]>(`${environment.url}api/egresados`)
+          .pipe(
+            map((egresados) => new fromActions.ReadSuccess(egresados)), // Cambiado a ReadSuccess
+            catchError((err) => {
+              this.notification.error(
+                `Error obteniendo egresados: ${err.message}`
+              );
+              return of(new fromActions.ReadError(err.message));
+            })
+          )
       )
     )
   );

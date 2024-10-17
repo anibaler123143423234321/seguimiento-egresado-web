@@ -18,6 +18,7 @@ export class EgresadoNuevoComponent implements OnInit {
     titulado: false,
     discapacidad: false,
   };
+  hide: boolean = true;
 
   constructor(private store: Store<fromRoot.State>) {}
 
@@ -48,6 +49,9 @@ export class EgresadoNuevoComponent implements OnInit {
         telefono2: form.value.telefono2,
         titulado: form.value.titulado,
         discapacidad: form.value.discapacidad,
+        email: form.value.email,
+        password: form.value.password,
+        username: form.value.username,
       };
 
       // Dispatch action to create a new egresado
@@ -61,5 +65,14 @@ export class EgresadoNuevoComponent implements OnInit {
         confirmButtonText: 'Aceptar',
       });
     }
+  }
+
+  onPasswordChange(event: KeyboardEvent) {
+    const passwordInput = (event.target as HTMLInputElement).value;
+    const hasNumber = /\d/.test(passwordInput);
+    const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(passwordInput);
+
+    // Puedes agregar más lógica aquí para manejar el estado de la contraseña.
+    // Por ejemplo, habilitar un botón de enviar solo si la contraseña es válida.
   }
 }

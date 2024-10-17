@@ -12,6 +12,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'listado',
+    loadChildren: () =>
+      import('./pages/egresado-listado/egresado-listado.module').then(
+        (m) => m.EgresadoListadoModule
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
     path: '**',
     pathMatch: 'full',
     redirectTo: 'list',
