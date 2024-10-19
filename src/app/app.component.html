@@ -4,6 +4,7 @@
       (menuToggle)="menu.toggle()"
       (signOut)="onSignOut()"
       [isAuthorized]="isAuthorized$ | async"
+      [user]="user$ | async"
     ></app-menu-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -12,7 +12,7 @@
 
   <!-- Formulario de Login a la Derecha -->
   <div class="right-section">
-    <mat-card class="login-card" @flyIn>
+    <mat-card class="login-card">
       <img src="assets/logo.png" alt="Logo del Instituto" class="logo" />
       <h2>INTRANET AL EGRESADO</h2>
       <form
@@ -20,7 +20,7 @@
         fxLayoutAlign="center center"
         fxLayoutGap="20px"
         #f="ngForm"
-        (ngSubmit)="loginUsuario(f)"
+        (ngSubmit)="loginEgresado(f)"
       >
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>USUARIO O EMAIL</mat-label>
@@ -38,13 +38,20 @@
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Clave</mat-label>
           <input
-            type="password"
+            [type]="showPassword ? 'text' : 'password'"
             matInput
             placeholder="Clave"
             name="password"
             ngModel
             required
           />
+          <mat-icon
+            matSuffix
+            (click)="showPassword = !showPassword"
+            class="toggle-visibility"
+          >
+            {{ showPassword ? "visibility" : "visibility_off" }}
+          </mat-icon>
           <mat-error>Debe ingresar su clave</mat-error>
         </mat-form-field>
 

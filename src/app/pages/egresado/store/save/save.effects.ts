@@ -58,7 +58,7 @@ export class SaveEffects {
       ofType(fromActions.Types.READ),
       switchMap(() =>
         this.httpClient
-          .get<EgresadoResponse[]>(`${environment.url}api/egresados`)
+          .get<EgresadoResponse[]>(`${environment.url}api/egresados/all`)
           .pipe(
             map((egresados) => new fromActions.ReadSuccess(egresados)), // Cambiado a ReadSuccess
             catchError((err) => {

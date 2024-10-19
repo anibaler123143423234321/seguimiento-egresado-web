@@ -1,53 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { from, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 import * as fromRoot from '@app/store';
 import * as fromUser from '@app/store/user';
-import { Store } from '@ngrx/store';
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate,
-  keyframes,
-} from '@angular/animations';
 
 @Component({
-  selector: 'app-loginEstudiante',
+  selector: 'app-login-egresado',
   templateUrl: './loginEstudiante.component.html',
   styleUrls: ['./loginEstudiante.component.scss'],
-  animations: [
-    trigger('flyIn', [
-      transition(':enter', [
-        animate(
-          '1s ease-in-out',
-          keyframes([
-            style({ transform: 'translateX(80%)', opacity: 2, offset: 0 }),
-          ])
-        ),
-      ]),
-    ]),
-  ],
 })
-export class LoginEstudianteComponent implements OnInit {
-  loading$!: Observable<boolean | null>;
+export class LoginEgresadoComponent implements OnInit {
+  showPassword = false;
 
   constructor(private store: Store<fromRoot.State>) {}
 
   ngOnInit(): void {}
 
-  loginUsuario(form: NgForm): void {
+  loginEgresado(form: NgForm): void {
     if (!form.valid) {
-      // Si el formulario no es válido (los campos están vacíos o incompletos), no enviar
       return;
     }
 
-    const userLoginRequest: fromUser.EmailPasswordCredentials = {
-      email: form.value.email || '', // Evitar valor null o undefined
-      password: form.value.password || '', // Evitar valor null o undefined
+    const egresadoLoginRequest: fromUser.EmailPasswordCredentials = {
+      email: form.value.email || '',
+      password: form.value.password || '',
     };
 
-    this.store.dispatch(new fromUser.SignInEmail(userLoginRequest));
+    console.log('Dispatching SignInEmailEgresado', egresadoLoginRequest);
+    this.store.dispatch(new fromUser.SignInEmail(egresadoLoginRequest, true));
   }
 }

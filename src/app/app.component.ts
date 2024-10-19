@@ -73,6 +73,7 @@ export class AppComponent implements OnInit {
 
   onSignOut(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.store.dispatch(new fromUser.SignOut());
     this.router.navigate(['/auth/loginEntrada']);
   }

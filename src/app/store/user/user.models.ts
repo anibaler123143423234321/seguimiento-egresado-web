@@ -1,5 +1,5 @@
-import {User} from '@app/models/backend/user';
-export { User as UserResponse} from '@app/models/backend/user';
+import { User } from '@app/models/backend/user';
+export { User as UserResponse } from '@app/models/backend/user';
 
 export interface EmailPasswordCredentials {
   email: string;
@@ -10,4 +10,4 @@ export interface UserRequest extends User {
   password: string;
 }
 
-export type UserCreateRequest = Omit<UserRequest, 'token' | 'id' >;
+export type UserCreateRequest = Omit<UserRequest, 'token' | 'id'>;

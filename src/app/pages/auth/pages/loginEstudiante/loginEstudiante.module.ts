@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LoginEstudianteRoutingModule } from './loginEstudiante-routing.module';
-import { LoginEstudianteComponent } from './loginEstudiante.component';
+import { LoginEgresadoComponent } from './loginEstudiante.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
@@ -16,7 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SpinnerModule } from '@app/shared/indicators';
 
 @NgModule({
-  declarations: [LoginEstudianteComponent],
+  declarations: [LoginEgresadoComponent],
   imports: [
     CommonModule,
     LoginEstudianteRoutingModule,

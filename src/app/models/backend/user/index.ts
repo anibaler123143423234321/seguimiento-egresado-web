@@ -1,4 +1,4 @@
-export interface User{
+export interface User {
   id: number;
   username: string;
   nombre: string;
@@ -6,4 +6,5 @@ export interface User{
   telefono: string;
   email: string;
   token: string;
+  role?: string;
 }

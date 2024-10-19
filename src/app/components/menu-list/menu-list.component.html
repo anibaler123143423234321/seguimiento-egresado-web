@@ -29,8 +29,9 @@
     <span class="navegacion-list-label">Contacto</span>
   </a>
 
+  <!-- Solo visible para usuarios con rol ADMIN -->
   <a
-    *ngIf="isAuthorized"
+    *ngIf="isAuthorized && isAdmin()"
     mat-list-item
     (click)="closeMenu()"
     routerLink="carrera/nuevo"
@@ -40,7 +41,7 @@
   </a>
 
   <a
-    *ngIf="isAuthorized"
+    *ngIf="isAuthorized && isAdmin()"
     mat-list-item
     (click)="closeMenu()"
     routerLink="egresado/nuevo"
@@ -59,13 +60,14 @@
     <span class="navegacion-list-label">Nuevo Movimiento Egresado</span>
   </a>
 
+  <!-- Lista de Egresados solo para ADMIN -->
   <a
-    *ngIf="isAuthorized"
+    *ngIf="isAuthorized && isAdmin()"
     mat-list-item
     (click)="closeMenu()"
     routerLink="egresado/listado"
   >
-    <mat-icon>add</mat-icon>
+    <mat-icon>list</mat-icon>
     <span class="navegacion-list-label">Lista de Egresados</span>
   </a>
 

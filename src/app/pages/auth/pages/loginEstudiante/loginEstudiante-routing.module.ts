@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginEstudianteComponent } from './loginEstudiante.component';
+import { LoginEgresadoComponent } from './loginEstudiante.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginEstudianteComponent,
+    component: LoginEgresadoComponent,
   },
 ];
 
