@@ -107,9 +107,10 @@
           [type]="hide ? 'password' : 'text'"
           (keyup)="onPasswordChange($event)"
         />
-        <button mat-icon-button matSuffix (click)="hide = !hide">
-          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        <button mat-icon-button matSuffix (click)="togglePasswordVisibility($event)" type="button">
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
+        
         <mat-error
           *ngIf="
             egresadoForm.controls['password']?.invalid &&

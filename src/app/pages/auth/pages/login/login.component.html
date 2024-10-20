@@ -35,7 +35,7 @@
           <mat-error>Debe ingresar su código de docente</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="full-width">
+        <mat-form-field class="full-width password-field" appearance="outline">
           <mat-label>Clave</mat-label>
           <input
             [type]="showPassword ? 'text' : 'password'"
@@ -47,11 +47,35 @@
           />
           <mat-icon
             matSuffix
-            (click)="showPassword = !showPassword"
-            class="toggle-visibility"
+            (click)="togglePasswordVisibility()"
+            class="eye-icon"
           >
-            {{ showPassword ? "visibility" : "visibility_off" }}
+            <svg
+              viewBox="0 0 21 21"
+              class="eye-svg"
+              [class.closed]="eyeIsClosed"
+              (mousemove)="followCursor($event)"
+              (mouseleave)="resetEyePosition()"
+            >
+              <circle class="eye" cx="10.5" cy="10.5" r="2.25"></circle>
+              <path
+                class="top"
+                d="M2 10.5S6.5 5.5 10.5 5.5 19 10.5 19 10.5"
+              ></path>
+              <path
+                class="bottom"
+                d="M2 10.5S6.5 15.5 10.5 15.5 19 10.5 19 10.5"
+              ></path>
+              <g class="lashes">
+                <path d="M10.5 5.5V3"></path>
+                <path d="M14.5 5.51L15 2.5"></path>
+                <path d="M6.5 5.5L6 2.5"></path>
+                <path d="M3.5 5.5L2.5 3"></path>
+                <path d="M17.5 5.5L18.5 3"></path>
+              </g>
+            </svg>
           </mat-icon>
+
           <mat-error>Debe ingresar su clave</mat-error>
         </mat-form-field>
 

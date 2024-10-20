@@ -1,17 +1,45 @@
+.menu-button {
+  position: relative; /* Necesario para el efecto de brillo */
+  overflow: hidden; /* Esconde el brillo fuera del botón */
+  transition: transform 0.3s; /* Suaviza la transición */
+}
+
+.icon-gradient {
+  background: linear-gradient(
+    45deg,
+    #ff4081,
+    #ffeb3b
+  ); /* Gradiente colorido para el ícono */
+  -webkit-background-clip: text; /* Clip del fondo para el texto */
+  -webkit-text-fill-color: transparent; /* Hace que el texto sea transparente */
+  display: inline-block; /* Asegúrate de que el elemento sea un bloque en línea */
+  transition: filter 0.3s; /* Suaviza la transición del brillo */
+}
+
+.menu-button:hover .icon-gradient {
+  filter: brightness(3) drop-shadow(0 0 20px rgba(255, 215, 0, 1)); /* Efecto de brillo fuerte */
+  transform: scale(1.1); /* Escala ligeramente el ícono */
+}
+
 .navegacion-menu {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-a{
+.navegacion-menu li {
+  display: inline; /* Asegúrate de que los elementos de la lista estén en línea */
+}
+
+a {
   text-decoration: none;
   color: white;
   cursor: pointer;
+  padding: 8px 16px; /* Añade algo de padding para hacer los enlaces más atractivos */
+  transition: color 0.3s; /* Suaviza el cambio de color */
 }
 
 a:hover,
-a:active{
-  color: #DBCDE6;
+a:active {
+  color: #dbcde6; /* Cambia a un color diferente en hover */
 }
-

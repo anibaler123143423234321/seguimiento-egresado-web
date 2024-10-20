@@ -12,6 +12,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'listado',
+    loadChildren: () =>
+      import(
+        './pages/movimiento-egresado-listado/movimiento-egresado-listado.module'
+      ).then((m) => m.MovimientoEgresadoListadoModule),
+    canActivate: [AuthGuard],
+  },
+  {
     path: '**',
     pathMatch: 'full',
     redirectTo: 'list',

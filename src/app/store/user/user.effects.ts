@@ -66,12 +66,12 @@ export class UserEffects {
           ? `${environment.url}api/authentication/sign-in/egresado`
           : `${environment.url}api/authentication/sign-in`;
 
-        console.log('isEgresado:', isEgresado);
-        console.log('Using endpoint:', endpoint);
+        //console.log('isEgresado:', isEgresado);
+        //console.log('Using endpoint:', endpoint);
 
         return this.httpClient.post<UserResponse>(endpoint, credentials).pipe(
           tap((response: UserResponse) => {
-            console.log('Server response:', response);
+            //console.log('Server response:', response);
             // Guarda el token y los datos del usuario
             localStorage.setItem('token', response.token);
             localStorage.setItem('user', JSON.stringify(response));
@@ -117,7 +117,7 @@ export class UserEffects {
 
         return this.httpClient.get<UserResponse>(endpoint).pipe(
           tap((user: UserResponse) => {
-            console.log('User fetched during INIT:', user); // Agrega esto
+            //console.log('User fetched during INIT:', user); // Agrega esto
             localStorage.setItem('user', JSON.stringify(user));
           }),
           map(

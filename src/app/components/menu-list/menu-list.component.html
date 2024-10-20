@@ -51,7 +51,7 @@
   </a>
 
   <a
-    *ngIf="isAuthorized"
+    *ngIf="isAuthorized && isEgresado()"
     mat-list-item
     (click)="closeMenu()"
     routerLink="movimiento-egresado/nuevo"
@@ -75,9 +75,9 @@
     *ngIf="isAuthorized"
     mat-list-item
     (click)="closeMenu()"
-    routerLink="listado_movimiento_egresado/nuevo"
+    routerLink="movimiento-egresado/listado"
   >
-    <mat-icon>add</mat-icon>
+    <mat-icon>list</mat-icon>
     <span class="navegacion-list-label">Lista de Movimiento de Egresados</span>
   </a>
 

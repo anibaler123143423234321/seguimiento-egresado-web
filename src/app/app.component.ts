@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
   }
 
   onFilesChanged(urls: string | string[]): void {
-    console.log(urls);
+    //console.log(urls);
   }
 
   onSuccess(): void {
@@ -75,6 +75,13 @@ export class AppComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.store.dispatch(new fromUser.SignOut());
-    this.router.navigate(['/auth/loginEntrada']);
+
+    this.router.navigate(['/auth/loginEntrada']).then(() => {
+      // Añade un retraso antes de ocultar el spinner
+      setTimeout(() => {
+        this.showSpinner = false; // Oculta el spinner
+        this.notification.success('Sesión cerrada con éxito');
+      }, 1000); // Ajusta el tiempo según sea necesario (1000 ms = 1 segundo)
+    });
   }
 }

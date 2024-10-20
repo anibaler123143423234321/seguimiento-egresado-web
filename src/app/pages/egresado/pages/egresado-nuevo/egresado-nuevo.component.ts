@@ -75,4 +75,10 @@ export class EgresadoNuevoComponent implements OnInit {
     // Puedes agregar más lógica aquí para manejar el estado de la contraseña.
     // Por ejemplo, habilitar un botón de enviar solo si la contraseña es válida.
   }
+
+  togglePasswordVisibility(event: MouseEvent): void {
+    event.preventDefault(); // Evita el comportamiento predeterminado
+    event.stopPropagation(); // Detiene la propagación del clic
+    this.hide = !this.hide; // Cambia el estado de visibilidad
+  }
 }

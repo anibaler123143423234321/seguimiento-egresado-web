@@ -27,7 +27,7 @@ export class SaveEffects {
       map((action: fromActions.Create) => action.egresado),
       tap((request: EgresadoCreateRequest) => {
         // Agrega un console.log para ver los datos del request
-        console.log('Datos que se están enviando:', request);
+        //console.log('Datos que se están enviando:', request);
       }),
       switchMap((request: EgresadoCreateRequest) =>
         this.httpClient

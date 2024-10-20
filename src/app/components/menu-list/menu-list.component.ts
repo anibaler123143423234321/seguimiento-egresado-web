@@ -31,4 +31,9 @@ export class MenuListComponent implements OnInit {
     // Verificar si user no es nulo y tiene la propiedad role
     return this.user?.role === 'ADMIN';
   }
+
+  isEgresado(): boolean {
+    // Verificar si user no es nulo y tiene la propiedad role
+    return this.user?.role === 'EGRESADO';
+  }
 }

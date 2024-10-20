@@ -1,139 +1,125 @@
 <mat-card class="egresado-card">
-  <mat-card-header>
-    <mat-card-title>Lista de Egresados</mat-card-title>
-  </mat-card-header>
-
   <mat-card-content>
     <div *ngIf="loading$ | async" class="loading">Cargando egresados...</div>
     <div *ngIf="!(loading$ | async)">
       <div class="mat-elevation-z8" fxLayout="column" fxLayoutAlign="center">
         <div fxLayout="row" fxLayoutAlign="start center" fxHide.sm>
-          <h2>Detalles de Egresados</h2>
+          <h2 class="table-title">Listado de Egresados</h2>
         </div>
 
         <div fxLayout="row" fxLayoutAlign="center" fxFlex="100">
-          <table mat-table [dataSource]="dataSource" class="mat-table">
-            <!-- ID Column -->
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef>ID</th>
-              <td mat-cell *matCellDef="let egresado">{{ egresado.id }}</td>
-            </ng-container>
+          <div class="table-container">
+            <table mat-table [dataSource]="dataSource" class="mat-table">
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>ID</th>
+                <td mat-cell *matCellDef="let egresado">{{ egresado.id }}</td>
+              </ng-container>
 
-            <!-- Año de Egreso Column -->
-            <ng-container matColumnDef="anioEgreso">
-              <th mat-header-cell *matHeaderCellDef>Año de Egreso</th>
-              <td mat-cell *matCellDef="let egresado">
-                {{ egresado.anioEgreso }}
-              </td>
-            </ng-container>
+              <ng-container matColumnDef="anioEgreso">
+                <th mat-header-cell *matHeaderCellDef>Año de Egreso</th>
+                <td mat-cell *matCellDef="let egresado">
+                  {{ egresado.anioEgreso }}
+                </td>
+              </ng-container>
 
-            <!-- Apellidos Column -->
-            <ng-container matColumnDef="apellidos">
-              <th mat-header-cell *matHeaderCellDef>Apellidos</th>
-              <td mat-cell *matCellDef="let egresado">
-                {{ egresado.apellidos }}
-              </td>
-            </ng-container>
+              <ng-container matColumnDef="apellidos">
+                <th mat-header-cell *matHeaderCellDef>Apellidos</th>
+                <td mat-cell *matCellDef="let egresado">
+                  {{ egresado.apellidos }}
+                </td>
+              </ng-container>
 
-            <!-- Discapacidad Column -->
-            <ng-container matColumnDef="discapacidad">
-              <th mat-header-cell *matHeaderCellDef>Discapacidad</th>
-              <td mat-cell *matCellDef="let egresado">
-                {{ egresado.discapacidad }}
-              </td>
-            </ng-container>
+              <ng-container matColumnDef="discapacidad">
+                <th mat-header-cell *matHeaderCellDef>Discapacidad</th>
+                <td mat-cell *matCellDef="let egresado">
+                  {{ egresado.discapacidad }}
+                </td>
+              </ng-container>
 
-            <!-- DNI Column -->
-            <ng-container matColumnDef="dni">
-              <th mat-header-cell *matHeaderCellDef>DNI</th>
-              <td mat-cell *matCellDef="let egresado">{{ egresado.dni }}</td>
-            </ng-container>
+              <ng-container matColumnDef="dni">
+                <th mat-header-cell *matHeaderCellDef>DNI</th>
+                <td mat-cell *matCellDef="let egresado">{{ egresado.dni }}</td>
+              </ng-container>
 
-            <!-- Carrera Column -->
-            <ng-container matColumnDef="carrera">
-              <th mat-header-cell *matHeaderCellDef>Carrera</th>
-              <td mat-cell *matCellDef="let egresado">
-                {{ egresado.idCarrera }}
-              </td>
-            </ng-container>
+              <ng-container matColumnDef="carrera">
+                <th mat-header-cell *matHeaderCellDef>Carrera</th>
+                <td mat-cell *matCellDef="let egresado">
+                  {{ egresado.idCarrera }}
+                </td>
+              </ng-container>
 
-            <!-- Nombre Column -->
-            <ng-container matColumnDef="nombre">
-              <th mat-header-cell *matHeaderCellDef>Nombre</th>
-              <td mat-cell *matCellDef="let egresado">{{ egresado.nombre }}</td>
-            </ng-container>
+              <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                <td mat-cell *matCellDef="let egresado">
+                  {{ egresado.nombre }}
+                </td>
+              </ng-container>
 
-            <!-- Sexo Column -->
-            <ng-container matColumnDef="sexo">
-              <th mat-header-cell *matHeaderCellDef>Sexo</th>
-              <td mat-cell *matCellDef="let egresado">{{ egresado.sexo }}</td>
-            </ng-container>
+              <ng-container matColumnDef="sexo">
+                <th mat-header-cell *matHeaderCellDef>Sexo</th>
+                <td mat-cell *matCellDef="let egresado">{{ egresado.sexo }}</td>
+              </ng-container>
 
-            <!-- Teléfono 1 Column -->
-            <ng-container matColumnDef="telefono1">
-              <th mat-header-cell *matHeaderCellDef>Teléfono 1</th>
-              <td mat-cell *matCellDef="let egresado">
-                {{ egresado.telefono1 }}
-              </td>
-            </ng-container>
+              <ng-container matColumnDef="telefono1">
+                <th mat-header-cell *matHeaderCellDef>Teléfono 1</th>
+                <td mat-cell *matCellDef="let egresado">
+                  {{ egresado.telefono1 }}
+                </td>
+              </ng-container>
 
-            <!-- Teléfono 2 Column -->
-            <ng-container matColumnDef="telefono2">
-              <th mat-header-cell *matHeaderCellDef>Teléfono 2</th>
-              <td mat-cell *matCellDef="let egresado">
-                {{ egresado.telefono2 }}
-              </td>
-            </ng-container>
+              <ng-container matColumnDef="telefono2">
+                <th mat-header-cell *matHeaderCellDef>Teléfono 2</th>
+                <td mat-cell *matCellDef="let egresado">
+                  {{ egresado.telefono2 }}
+                </td>
+              </ng-container>
 
-            <!-- Titulado Column -->
-            <ng-container matColumnDef="titulado">
-              <th mat-header-cell *matHeaderCellDef>Titulado</th>
-              <td mat-cell *matCellDef="let egresado">
-                {{ egresado.titulado }}
-              </td>
-            </ng-container>
+              <ng-container matColumnDef="titulado">
+                <th mat-header-cell *matHeaderCellDef>Titulado</th>
+                <td mat-cell *matCellDef="let egresado">
+                  {{ egresado.titulado }}
+                </td>
+              </ng-container>
 
-            <!-- Email Column -->
-            <ng-container matColumnDef="email">
-              <th mat-header-cell *matHeaderCellDef>Email</th>
-              <td mat-cell *matCellDef="let egresado">{{ egresado.email }}</td>
-            </ng-container>
+              <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>Email</th>
+                <td mat-cell *matCellDef="let egresado">
+                  {{ egresado.email }}
+                </td>
+              </ng-container>
 
-            <!-- Estado Column -->
-            <ng-container matColumnDef="estado">
-              <th mat-header-cell *matHeaderCellDef>Estado</th>
-              <td mat-cell *matCellDef="let egresado">{{ egresado.estado }}</td>
-            </ng-container>
+              <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef>Estado</th>
+                <td mat-cell *matCellDef="let egresado">
+                  {{ egresado.estado }}
+                </td>
+              </ng-container>
 
-            <!-- Fecha de Nacimiento Column -->
-            <ng-container matColumnDef="fechaNacimiento">
-              <th mat-header-cell *matHeaderCellDef>Fecha de Nacimiento</th>
-              <td mat-cell *matCellDef="let egresado">
-                {{ egresado.fechaNacimiento }}
-              </td>
-            </ng-container>
+              <ng-container matColumnDef="fechaNacimiento">
+                <th mat-header-cell *matHeaderCellDef>Fecha de Nacimiento</th>
+                <td mat-cell *matCellDef="let egresado">
+                  {{ egresado.fechaNacimiento }}
+                </td>
+              </ng-container>
 
-            <!-- Usuario Column -->
-            <ng-container matColumnDef="username">
-              <th mat-header-cell *matHeaderCellDef>Usuario</th>
-              <td mat-cell *matCellDef="let egresado">
-                {{ egresado.username }}
-              </td>
-            </ng-container>
+              <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef>Usuario</th>
+                <td mat-cell *matCellDef="let egresado">
+                  {{ egresado.username }}
+                </td>
+              </ng-container>
 
-            <!-- Rol Column -->
-            <ng-container matColumnDef="role">
-              <th mat-header-cell *matHeaderCellDef>Rol</th>
-              <td mat-cell *matCellDef="let egresado">{{ egresado.role }}</td>
-            </ng-container>
+              <ng-container matColumnDef="role">
+                <th mat-header-cell *matHeaderCellDef>Rol</th>
+                <td mat-cell *matCellDef="let egresado">{{ egresado.role }}</td>
+              </ng-container>
 
-            <!-- Header and Row Definitions -->
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-          </table>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+          </div>
         </div>
 
-        <!-- Paginador -->
         <mat-paginator
           [pageSizeOptions]="[5, 10, 20]"
           showFirstLastButtons

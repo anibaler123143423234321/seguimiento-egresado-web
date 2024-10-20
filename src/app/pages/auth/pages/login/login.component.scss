@@ -187,3 +187,72 @@ mat-form-field.mat-focused .mat-form-field-outline-end {
 .social-icons a:hover {
   color: #555;
 }
+.eye-svg {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.eye-svg .eye {
+  fill: transparent;
+  stroke: #000;
+  stroke-width: 1.5;
+  transition: all 0.3s ease;
+}
+
+.eye-svg .top,
+.eye-svg .bottom {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5;
+  transition: all 0.3s ease;
+}
+
+.eye-svg .lashes path {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5;
+  transition: all 0.3s ease;
+}
+
+.eye-svg.closed .eye {
+  fill: transparent;
+}
+
+.eye-svg.closed .top {
+  d: path(
+    "M2 10.5S6.5 15.5 10.5 15.5 19 10.5 19 10.5"
+  ); /* Cambia la forma del ojo cerrado */
+}
+
+.eye-svg.closed .bottom {
+  d: path(
+    "M2 10.5S6.5 15.5 10.5 15.5 19 10.5 19 10.5"
+  ); /* Cambia la forma del ojo cerrado */
+}
+
+.eye-svg.closed .lashes path {
+  transform: translateY(5px); /* Baja las pestañas */
+  stroke-width: 0.75; /* Las pestañas se hacen más delgadas */
+  opacity: 0.6;
+}
+
+.eye-svg:hover .eye {
+  fill: #000; /* La pupila se llena cuando pasas el mouse */
+}
+
+.eye-svg.closed .eye {
+  fill: transparent; /* Pupila invisible cuando está cerrado */
+}
+
+.eye-svg.closed:hover .eye {
+  fill: transparent; /* No mostrar la pupila al pasar el mouse si el ojo está cerrado */
+}
+
+.eye-svg.closed:hover .lashes path {
+  stroke: none;
+}
+
+.eye-svg .lashes path {
+  transition: transform 0.3s ease, stroke-width 0.3s ease;
+}

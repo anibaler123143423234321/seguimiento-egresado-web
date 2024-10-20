@@ -26,7 +26,7 @@ export class LoginEgresadoComponent implements OnInit {
       password: form.value.password || '',
     };
 
-    console.log('Dispatching SignInEmailEgresado', egresadoLoginRequest);
+    //console.log('Dispatching SignInEmailEgresado', egresadoLoginRequest);
     this.store.dispatch(new fromUser.SignInEmail(egresadoLoginRequest, true));
   }
 }
