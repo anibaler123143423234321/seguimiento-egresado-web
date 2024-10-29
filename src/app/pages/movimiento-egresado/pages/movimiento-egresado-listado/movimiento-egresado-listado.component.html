@@ -1,5 +1,71 @@
 <mat-card class="egresado-card">
-  <mat-card-header>
-    <mat-card-title>Listado de Movimiento de Egresados</mat-card-title>
-  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="loading$ | async" class="loading">Cargando movimientos...</div>
+    <div *ngIf="!(loading$ | async)">
+      <div class="mat-elevation-z8" fxLayout="column" fxLayoutAlign="center">
+        <div fxLayout="row" fxLayoutAlign="center center" fxHide.sm>
+          <h2 class="table-title">Listado de Movimientos de Egresados</h2>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center" fxFlex="100">
+          <div class="table-container">
+            <table mat-table [dataSource]="dataSource" class="mat-table">
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>ID</th>
+                <td mat-cell *matCellDef="let movimiento">
+                  {{ movimiento.id }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="nombreEgresado">
+                <th mat-header-cell *matHeaderCellDef>Egresado</th>
+                <td mat-cell *matCellDef="let movimiento">
+                  {{ movimiento.egresado.nombre }}
+                  {{ movimiento.egresado.apellidos }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="empresa">
+                <th mat-header-cell *matHeaderCellDef>Empresa</th>
+                <td mat-cell *matCellDef="let movimiento">
+                  {{ movimiento.empresa }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="cargo">
+                <th mat-header-cell *matHeaderCellDef>Cargo</th>
+                <td mat-cell *matCellDef="let movimiento">
+                  {{ movimiento.cargo }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="fechaInicio">
+                <th mat-header-cell *matHeaderCellDef>Fecha Inicio</th>
+                <td mat-cell *matCellDef="let movimiento">
+                  {{ movimiento.fechaInicio | date : "shortDate" }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="fechaFin">
+                <th mat-header-cell *matHeaderCellDef>Fecha Fin</th>
+                <td mat-cell *matCellDef="let movimiento">
+                  {{ movimiento.fechaFin | date : "shortDate" }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="observaciones">
+                <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+                <td mat-cell *matCellDef="let movimiento">
+                  {{ movimiento.observaciones }}
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
 </mat-card>

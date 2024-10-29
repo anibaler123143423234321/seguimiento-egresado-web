@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { UserResponse } from '@app/store/user';
+import { GeneralService } from '@app/services/general.service';
+import { EgresadoResponse } from '@app/pages/egresado/store/save/index';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +13,17 @@ export class HeaderComponent implements OnInit {
   @Input() user!: UserResponse | null;
   @Input() isAuthorized!: boolean | null;
   @Output() signOut = new EventEmitter<void>();
+  @Input() egresado!: EgresadoResponse | null;
 
-  constructor() {}
+  constructor(public GeneralService: GeneralService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    /*  this.GeneralService.usuario$ = this.user;
+    setTimeout(() => {
+      console.log('Usuario:', this.GeneralService.usuario$);
+    }, 2000); */
+  }
+
   onMenuToggleDispatch(): void {
     this.menuToggle.emit();
   }

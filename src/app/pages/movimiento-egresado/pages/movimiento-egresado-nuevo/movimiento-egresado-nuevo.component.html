@@ -9,11 +9,12 @@
         <mat-label>ID del Egresado</mat-label>
         <input
           matInput
+          [(ngModel)]="usuarioId"
           placeholder="ID del Egresado"
           name="egresadoId"
-          ngModel
           required
           type="number"
+          readonly
         />
       </mat-form-field>
 

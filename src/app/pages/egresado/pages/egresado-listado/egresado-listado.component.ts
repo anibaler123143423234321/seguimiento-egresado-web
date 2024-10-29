@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as fromRoot from '@app/store';
 import * as fromList from '../../store/save';
 import { select, Store } from '@ngrx/store';
 import { MatTableDataSource } from '@angular/material/table'; // Importa MatTableDataSource
 import { Egresado } from '@app/models/backend/egresado';
+import { MatPaginator, PageEvent } from '@angular/material/paginator'; // Importa MatPaginator
 
 @Component({
   selector: 'app-egresado-listado',
@@ -34,22 +35,41 @@ export class EgresadoListadoComponent implements OnInit {
   ];
 
   egresados$!: Observable<Egresado[] | null>;
-  dataSource = new MatTableDataSource<Egresado>(); // Inicializa MatTableDataSource
+  dataSource = new MatTableDataSource<Egresado>();
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator; // Referencia al paginator
+
+  private currentPage: number = 0;
+  public elementosPorPagina: number = 5;
+  totalItems: number = 0; // Define la propiedad totalItems
 
   constructor(private store: Store<fromRoot.State>) {}
 
   ngOnInit(): void {
-    // Despachamos la acción para obtener todos los egresados
-    this.store.dispatch(new fromList.Read());
-
-    // Nos suscribimos a los egresados y al loading desde el store
-    this.egresados$ = this.store.pipe(select(fromList.getCarreras));
+    this.fetchEgresados();
     this.loading$ = this.store.pipe(select(fromList.getLoading));
 
-    // Suscribirse al observable de egresados
-    this.egresados$.subscribe((egresados) => {
-      // Asigna los datos a dataSource, asegurándote de que nunca sea null
-      this.dataSource.data = egresados ?? []; // Si egresados es null, asigna un arreglo vacío
+    this.store.pipe(select(fromList.getCarreras)).subscribe((egresados) => {
+      this.dataSource.data = egresados ?? [];
+      this.dataSource.paginator = this.paginator; // Vincular paginator al dataSource
     });
+  }
+
+  fetchEgresados(): void {
+    this.store.dispatch(
+      new fromList.Read(this.currentPage, this.elementosPorPagina)
+    );
+  }
+
+  onPageChange(event: PageEvent): void {
+    this.currentPage = event.pageIndex; // Actualiza la página actual
+    this.elementosPorPagina = event.pageSize; // Actualiza los elementos por página
+
+    console.log(
+      `Página: ${this.currentPage}, Elementos por página: ${this.elementosPorPagina}`
+    );
+
+    // Llama a la función que vuelve a hacer la petición con los nuevos valores
+    this.fetchEgresados();
   }
 }

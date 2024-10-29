@@ -57,4 +57,23 @@ export class SaveEffects {
       )
     )
   );
+
+  loadMovimientos: Observable<Action> = createEffect(() =>
+    this.actions.pipe(
+      ofType(fromActions.Types.READ),
+      switchMap(() =>
+        this.httpClient
+          .get<MovimientoEgresadoResponse[]>(
+            `${environment.url}api/movimientos-egresados/movimientos`
+          )
+          .pipe(
+            map(
+              (movimientos: MovimientoEgresadoResponse[]) =>
+                new fromActions.ReadSuccess(movimientos) // Cambié a ReadSuccess
+            ),
+            catchError((err) => of(new fromActions.ReadError(err.message)))
+          )
+      )
+    )
+  );
 }

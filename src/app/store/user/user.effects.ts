@@ -75,8 +75,8 @@ export class UserEffects {
             // Guarda el token y los datos del usuario
             localStorage.setItem('token', response.token);
             localStorage.setItem('user', JSON.stringify(response));
-            this.GeneralService.setUsuarioData(response);
-            this.router.navigate(['/']);
+            /*             this.GeneralService.setUsuarioData(response);
+             */ this.router.navigate(['/']);
           }),
           map(
             (response: UserResponse) =>
@@ -117,8 +117,15 @@ export class UserEffects {
 
         return this.httpClient.get<UserResponse>(endpoint).pipe(
           tap((user: UserResponse) => {
-            //console.log('User fetched during INIT:', user); // Agrega esto
+            // Guardar el usuario en localStorage
             localStorage.setItem('user', JSON.stringify(user));
+
+            // Asignar el usuario a GeneralService.usuario$
+            this.GeneralService.usuario$ = user;
+            console.log(
+              'data del usuario en sesion que viene del servidor=>',
+              this.GeneralService.usuario$
+            );
           }),
           map(
             (user: UserResponse) =>

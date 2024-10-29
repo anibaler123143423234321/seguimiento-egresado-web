@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     };
 
     //console.log('Dispatching SignInEmail', userLoginRequest);
-    this.store.dispatch(new fromUser.SignInEmail(userLoginRequest, false));
+    this.store.dispatch(new fromUser.SignInEmail(userLoginRequest));
   }
 
   // Para controlar el movimiento del ojo

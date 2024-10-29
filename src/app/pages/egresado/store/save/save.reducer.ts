@@ -6,6 +6,8 @@ export interface ListState {
   egresado: EgresadoResponse | null;
   loading: boolean | null;
   error: string | null;
+  page: number;
+  pageSize: number;
 }
 
 export const initialState: ListState = {
@@ -13,6 +15,8 @@ export const initialState: ListState = {
   egresado: null,
   loading: null,
   error: null,
+  page: 1,
+  pageSize: 10,
 };
 
 export function reducer(
@@ -38,7 +42,13 @@ export function reducer(
     }
 
     case fromActions.Types.READ: {
-      return { ...state, loading: true, error: null };
+      return {
+        ...state,
+        loading: true,
+        error: null,
+        page: action.page,
+        pageSize: action.pageSize,
+      };
     }
 
     case fromActions.Types.READ_SUCCESS: {

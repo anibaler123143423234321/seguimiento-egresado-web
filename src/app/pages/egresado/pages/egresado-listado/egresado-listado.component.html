@@ -3,8 +3,8 @@
     <div *ngIf="loading$ | async" class="loading">Cargando egresados...</div>
     <div *ngIf="!(loading$ | async)">
       <div class="mat-elevation-z8" fxLayout="column" fxLayoutAlign="center">
-        <div fxLayout="row" fxLayoutAlign="start center" fxHide.sm>
-          <h2 class="table-title">Listado de Egresados</h2>
+        <div fxLayout="row" fxLayoutAlign="center center" fxHide.sm>
+          <h2 class="table-title" >Listado de Egresados</h2>
         </div>
 
         <div fxLayout="row" fxLayoutAlign="center" fxFlex="100">
@@ -121,9 +121,12 @@
         </div>
 
         <mat-paginator
-          [pageSizeOptions]="[5, 10, 20]"
-          showFirstLastButtons
-        ></mat-paginator>
+          [length]="totalItems"
+          [pageSize]="elementosPorPagina"
+          [pageSizeOptions]="[5, 10, 25, 50]"
+          (page)="onPageChange($event)"
+        >
+        </mat-paginator>
       </div>
     </div>
   </mat-card-content>

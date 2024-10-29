@@ -13,7 +13,12 @@ export enum Types {
 
 export class Read implements Action {
   readonly type = Types.READ;
-  constructor() {}
+  constructor(
+    public pagina: number = 0,
+    public elementosPorPagina: number = 5,
+    public ordenadorPor: string = 'nombre',
+    public enOrden: string = 'ASC'
+  ) {}
 }
 
 export class ReadSuccess implements Action {

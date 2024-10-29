@@ -56,19 +56,30 @@ export class SaveEffects {
   getAll: Observable<Action> = createEffect(() =>
     this.actions.pipe(
       ofType(fromActions.Types.READ),
-      switchMap(() =>
-        this.httpClient
-          .get<EgresadoResponse[]>(`${environment.url}api/egresados/all`)
+      map((action: fromActions.Read) => ({
+        pagina: action.pagina,
+        elementosPorPagina: action.elementosPorPagina,
+        ordenadorPor: action.ordenadorPor,
+        enOrden: action.enOrden,
+      })),
+      switchMap(({ pagina, elementosPorPagina, ordenadorPor, enOrden }) => {
+        console.log(
+          `Obteniendo egresados de la página ${pagina} con ${elementosPorPagina} elementos`
+        );
+        return this.httpClient
+          .get<{ content: EgresadoResponse[] }>(
+            `${environment.url}api/egresados/all?pagina=${pagina}&elementosPorPagina=${elementosPorPagina}&ordenadorPor=${ordenadorPor}&enOrden=${enOrden}`
+          )
           .pipe(
-            map((egresados) => new fromActions.ReadSuccess(egresados)), // Cambiado a ReadSuccess
+            map((response) => new fromActions.ReadSuccess(response.content)),
             catchError((err) => {
               this.notification.error(
                 `Error obteniendo egresados: ${err.message}`
               );
               return of(new fromActions.ReadError(err.message));
             })
-          )
-      )
+          );
+      })
     )
   );
 }

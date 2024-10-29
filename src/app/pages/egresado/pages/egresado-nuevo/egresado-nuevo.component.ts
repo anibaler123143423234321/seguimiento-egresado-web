@@ -40,7 +40,7 @@ export class EgresadoNuevoComponent implements OnInit {
       const egresadoCreateRequest: fromList.EgresadoCreateRequest = {
         dni: form.value.dni,
         nombre: form.value.nombre,
-        apellidos: form.value.apellidos,
+        apellido: form.value.apellidos,
         sexo: form.value.sexo,
         fechaNacimiento: form.value.fechaNacimiento,
         idCarrera: form.value.idCarrera,

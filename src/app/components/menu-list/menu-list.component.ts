@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GeneralService } from '@app/services/general.service';
 import { User } from '@app/models/backend/user/index';
+import { Egresado } from '@app/models/backend/egresado/index';
 
 @Component({
   selector: 'app-menu-list',
@@ -12,6 +13,7 @@ export class MenuListComponent implements OnInit {
 
   @Input() isAuthorized!: boolean | null;
   @Input() user: User | null = null;
+  @Input() egresado!: Egresado | null;
 
   @Output() signOut = new EventEmitter<void>();
 
